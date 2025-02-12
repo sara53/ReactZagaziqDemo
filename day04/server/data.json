@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Book edited",
+      "price": 200,
+      "quantity": 20
+    },
+    {
+      "id": "4",
+      "name": "Watch",
+      "price": 900,
+      "quantity": 36
+    },
+    {
+      "id": "2f4d",
+      "name": "orange",
+      "price": "50",
+      "quantity": "60"
+    },
+    {
+      "id": "698b",
+      "name": "dnjso",
+      "price": "123",
+      "quantity": "75"
+    }
+  ]
+}

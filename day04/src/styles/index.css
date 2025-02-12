@@ -1,0 +1,10 @@
+img {
+	width: 100%;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 3px;
+}
+
+.notfound {
+	height: 90vh;
+}
