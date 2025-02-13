@@ -6,37 +6,21 @@ import { IoEye } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
 import { Link } from 'react-router-dom';
 import { deleteProduct, getAllProducts } from '../api/productapi';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteProductAction, getAllProductsAction } from '../store/productSlice';
 
 export function Products() {
 
-    let [ products, setProducts ] = useState( [] )
-    let [ errors, setErrors ] = useState( null )
-    let [ isLoading, setIsLoading ] = useState( true )
-
+    const { products, isLoading, errors } = useSelector( store => store.productSlice )
+    // 
+    const dispatch = useDispatch();
     useEffect( () => {
-        const fetchProducts = async () => {
-            setIsLoading( true )
-            try {
-                let response = await getAllProducts()
-                setProducts( response.data )// success
-                setIsLoading( false )
-
-            } catch ( error ) {
-                setErrors( error )
-                setIsLoading( false )
-
-            }
-        }
-
-        fetchProducts();
-
+        // database --- 
+        dispatch( getAllProductsAction() )
     }, [] )
 
     const deleteHandler = async ( productId ) => {
-        await deleteProduct( productId )
-            .then( () =>
-                setProducts( products.filter( product => product.id != productId ) )
-            ).catch( ( error ) => console.log( error ) )
+        dispatch( deleteProductAction( productId ) )
     }
     return (
         <div className='container mt-5'>

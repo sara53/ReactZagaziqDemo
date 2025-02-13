@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Button, Container, Form } from 'react-bootstrap'
 import { addNewProduct, editProduct, getProductById } from '../api/productapi'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addProductAction } from '../store/productSlice'
 
 export function ProductForm() {
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const { id } = useParams();
@@ -32,11 +36,12 @@ export function ProductForm() {
         e.preventDefault()
 
         if ( id == 0 ) {
-            await addNewProduct( formData )
-            navigate( '/products' )
+
+            await dispatch( addProductAction( formData ) )
+            navigate( "/products" )
         } else {
-            await editProduct( id, formData )
-            navigate( '/products' )
+
+            // dispatch(editProductAction(id,formData))
         }
 
     }

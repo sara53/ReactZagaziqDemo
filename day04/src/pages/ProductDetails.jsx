@@ -3,15 +3,16 @@ import { FaStar } from "react-icons/fa6";
 import productImg from '../assets/1.jpg'
 import { Link, useParams } from 'react-router-dom';
 import { getProductById } from '../api/productapi';
+import { useSelector } from 'react-redux';
 export function ProductDetails() {
 
     const { id } = useParams()
 
     const [ product, setProduct ] = useState( {} );
+    const { products } = useSelector( store => store.productSlice )
     useEffect( () => {
-        getProductById( id )
-            .then( ( response ) => setProduct( response.data ) )
-            .catch( ( error ) => { console.log( error ) } )
+        // 
+        setProduct( products.find( product => product.id == id ) )
     }, [] )
     return (
         <div className='bg-dark p-5 container m-5 rounded text-light'>

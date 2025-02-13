@@ -7,6 +7,7 @@ import { ProductDetails } from '../pages/ProductDetails'
 import { NotFound } from '../pages/NotFound'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { SharedLayout } from '../SharedLayout/SharedLayout'
+import { Counter } from '../pages/CounterWithToolKit'
 
 export function MainLayout() {
     return (
@@ -17,6 +18,7 @@ export function MainLayout() {
                     <Route path='products' element={<Products />} />
                     <Route path='products/:id' element={<ProductDetails />} />
                     <Route path='products/:id/edit' element={<ProductForm />} />
+                    <Route path='counter' element={<Counter />} />
                     <Route path='*' element={<NotFound />} />
                 </Route>
             </Routes>
